@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        def findTime(conversation: str, infectedCategory: str) -> int:
+        time = 0
+        while infectedCategory in conversation:
+            new_conversation = ""
+            n = len(conversation)
+            for i in range(n):
+                if conversation[i] == infectedCategory:
+                    if i > 0 and conversation[i - 1] != infectedCategory:
+                        new_conversation = new_conversation[:-1]
+                else:
+                    new_conversation += conversation[i]
+            
+            if conversation == new_conversation:
+                break
+            
+            conversation = new_conversation
+            time += 1
+        
+        return time
+    
+    # Taking user input
+    conversation = input("Enter the conversation string: ")
+    infectedCategory = input("Enter the infected category character: ")
+    
+    # Output the result
+    print(findTime(conversation, infectedCategory)) 
+    </pre>
+</body>
+</html>
